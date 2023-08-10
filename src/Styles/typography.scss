@@ -1,0 +1,44 @@
+.heading1{
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 26px;
+}
+
+.heading2{
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.heading3{
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.headline{
+        font-family: var(--font-primary);
+        font-weight: 400;
+        font-size: 16px;
+}
+
+.body{
+    font-family: var(--font-primary);
+    color: var(--color-primary);
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.bodyBold{
+    font-family: var(--font-primary);
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.caption{
+    font-family: var(--font-primary);
+    color: var(--gray-300);
+    font-weight: 400;
+    font-size: 12px;
+}

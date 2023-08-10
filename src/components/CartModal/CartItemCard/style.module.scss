@@ -1,0 +1,28 @@
+.mainList {
+    display: flex;
+    padding: 16px;
+    background-color: var(--color-white);
+
+    div {
+        display: flex;
+        gap: 15px;
+    }
+
+    h3 {
+        width: 12.875rem;
+    }
+
+    img {
+        background-color: var(--gray-100);
+        width: 6.25rem;
+        height: 5rem;
+    }
+
+    button {
+        color: var(--button-disable);
+        height: 1.75rem;
+        border: none;
+        margin-left: 92px;
+        cursor: pointer;
+    }
+}
