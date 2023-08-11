@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
-import { CartModal } from "../../components/CartModal";
-import { Header } from "../../components/Header";
-import { ProductList } from "../../components/ProductList";
-import { api } from "../../assets/services/api";
+import { useEffect, useState } from "react"
+import { CartModal } from "../../components/CartModal"
+import { Header } from "../../components/Header"
+import { ProductList } from "../../components/ProductList"
+import { api } from "../../assets/services/api"
 
 export const HomePage = () => {
    const [productList, setProductList] = useState([])
    const [cartList, setCartList] = useState([])
    const [isVisible, setIsVisible] = useState(false)
+   const [search, setSearch] = useState("")
 
    // useEffect montagem - carrega os produtos da API e joga em productList CHECK
    // useEffect atualização - salva os produtos no localStorage (carregar no estado)
@@ -16,12 +17,11 @@ export const HomePage = () => {
    // filtro de busca
    // estilizar tudo com sass de forma responsiva
    useEffect(() => {
-       const itemCart =  JSON.parse(localStorage.getItem("@cartlist"))
-      if(itemCart){
+      const itemCart = JSON.parse(localStorage.getItem("@cartlist"))
+      if (itemCart) {
          setCartList(itemCart)
       }
-    }, [])
-  
+   }, [])
 
    useEffect(() => {
       const getFood = async () => {
@@ -35,22 +35,29 @@ export const HomePage = () => {
       getFood()
    }, [])
 
+   const filterProducts = productList.filter((product) =>
+      product.name.toLowerCase().includes(search.toLowerCase()))
+
+   const renderSearch = search ? filterProducts : productList
    return (
       <>
-         <Header 
-         setIsVisible={setIsVisible}
-         cartList={cartList} />
+         <Header
+            setIsVisible={setIsVisible}
+            cartList={cartList}
+            setSearch={setSearch}
+         />
 
          <main>
             <ProductList
-               productList={productList}
+               productList={renderSearch}
                setCartList={setCartList}
-               cartList={cartList} />
+               cartList={cartList}
+            />
 
-            {isVisible ? <CartModal cartList={cartList} 
-            setIsVisible={setIsVisible}
-            setCartList={setCartList} /> : null}
+            {isVisible ? <CartModal cartList={cartList}
+               setIsVisible={setIsVisible}
+               setCartList={setCartList} /> : null}
          </main>
       </>
-   );
-};
+   )
+}

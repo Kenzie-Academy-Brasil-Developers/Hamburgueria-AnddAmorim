@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react"
 import styles from "./style.module.scss"
-import { toast } from "react-hot-toast";
+import { toast } from "react-hot-toast"
 
 export const ProductCard = ({ product, cartList, setCartList }) => {
 
   useEffect(() => {
-    if(cartList.length > 0){
-      
+    if (cartList.length > 0) {
+
       localStorage.setItem("@cartlist", JSON.stringify(cartList))
     }
   }, [cartList])
@@ -15,13 +15,11 @@ export const ProductCard = ({ product, cartList, setCartList }) => {
   const addItemToCart = () => {
     const ItemInCart = cartList.some((item) => item.id === product.id)
     if (ItemInCart) {
-      toast.success("Olá, já estou no carrinho!")
-    } else {
-      const storeCartList = JSON.parse(localStorage.getItem("@cartlist"))
-      setCartList(storeCartList ? storeCartList : [])
-      setCartList((prevCartList) => [...prevCartList, product])
-      toast.success("Produto adicionado com sucesso")
+      return toast.success("Olá, já estou no carrinho!")
     }
+    setCartList((prevCartList) => [...prevCartList, product])
+    toast.success("Produto adicionado com sucesso")
+
   }
 
 

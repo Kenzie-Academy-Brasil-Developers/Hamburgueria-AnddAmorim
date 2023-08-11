@@ -1,5 +1,5 @@
-import { toast } from "react-hot-toast";
-import { MdDelete } from "react-icons/md";
+import { toast } from "react-hot-toast"
+import { MdDelete } from "react-icons/md"
 import styles from "./style.module.scss"
 
 export const CartItemCard = ({ product, cartList, setCartList }) => {
@@ -16,7 +16,7 @@ export const CartItemCard = ({ product, cartList, setCartList }) => {
       <li className={styles.mainList}>
          <div>
             <div>
-            <img src={product.img} alt={product.name} />
+               <img src={product.img} alt={product.name} />
             </div>
             <h3>{product.name}</h3>
             <button onClick={() => {
@@ -27,7 +27,7 @@ export const CartItemCard = ({ product, cartList, setCartList }) => {
                title="Remover item">
                <MdDelete size={21} />
             </button>
-             </div>
+         </div>
       </li>
    )
 }
